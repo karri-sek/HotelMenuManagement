@@ -1,23 +1,28 @@
 'use strict';
 
-angular.module('HotelMenuApp',[]).controller('menuController', function(){
-        this.tab = 1;
-        this.filterText='';
-        this.select = function(setTab){
-            this.tab = setTab;
+angular.module('HotelMenuApp',[]).controller('MenuController', ['$scope',function($scope){
+        $scope.tab = 1;
+        $scope.filterText='';
+        $scope.showDetails = false;
+        $scope.select = function(setTab){
+            $scope.tab = setTab;
             switch(setTab){
-                case 2: this.filterText = "appetizer"; break;
-                case 3: this.filterText = "mains"; break;
-                case 4: this.filterText = "dessert"; break;
-                default: this.filterText = "";
+                case 2: $scope.filterText = "appetizer"; break;
+                case 3: $scope.filterText = "mains"; break;
+                case 4: $scope.filterText = "dessert"; break;
+                default: $scope.filterText = "";
             }   
         };
 
-        this.isSelected = function(checkTab){
-            return this.tab === checkTab;   
+        $scope.isSelected = function(checkTab){
+            return $scope.tab === checkTab;   
         };
 
-        this.dishes=[
+        $scope.toggleDetails = function(){
+           $scope.showDetails = !$scope.showDetails;
+        };
+
+        $scope.dishes=[
                          {
                            name:'Uthapizza',
                            image: 'images/uthapizza.png',
@@ -55,4 +60,4 @@ angular.module('HotelMenuApp',[]).controller('menuController', function(){
                            comment: ''
                         }
                 ];
-       });
+       }]);
