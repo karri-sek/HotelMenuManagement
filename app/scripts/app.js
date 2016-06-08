@@ -60,4 +60,10 @@ angular.module('HotelMenuApp',[]).controller('MenuController', ['$scope',functio
                            comment: ''
                         }
                 ];
-       }]);
+       }])
+        .controller('ContactController',['$scope',function($scope){
+            $scope.feedback = {mychannel:"",  firstName: "", lastName: "", agree:false, email:"" }
+        }])
+        .controller('FeedbackController',['$scope',function($scope){
+
+        }]);
